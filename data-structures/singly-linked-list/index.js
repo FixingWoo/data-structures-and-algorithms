@@ -1,18 +1,18 @@
 class Node {
-  constructor(val) {
-    this.val = val;
+  constructor(value) {
+    this.value = value;
     this.next = null;
   }
 }
 
-class LinkedList {
+class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
-  push(val) {
-    const newNode = new Node(val);
+  push(value) {
+    const newNode = new Node(value);
 
     if (this.length === 0) {
       this.head = newNode;
@@ -68,8 +68,8 @@ class LinkedList {
     this.length--;
     return currentHead;
   }
-  unshift(val) {
-    const newNode = new Node(val);
+  unshift(value) {
+    const newNode = new Node(value);
 
     const currentHead = this.head;
 
@@ -94,33 +94,33 @@ class LinkedList {
 
     return current;
   }
-  set(index, val) {
+  set(index, value) {
     const foundNode = this.get(index);
 
     if (!foundNode) {
       return null;
     }
 
-    foundNode.val = val;
+    foundNode.value = value;
 
     return foundNode;
   }
-  insert(index, val) {
+  insert(index, value) {
     if (index < 0 || index > this.length) {
       return false;
     }
 
     if (index === this.length) {
-      this.push(val);
+      this.push(value);
       return true;
     }
 
     if (index === 0) {
-      this.unshift(val);
+      this.unshift(value);
       return true;
     }
 
-    const newNode = new Node(val);
+    const newNode = new Node(value);
     const prev = this.get(index - 1);
     const temp = prev.next;
 
@@ -177,7 +177,7 @@ class LinkedList {
   }
 }
 
-const linkedList = new LinkedList();
+const linkedList = new SinglyLinkedList();
 
 // Push
 linkedList.push('A');
