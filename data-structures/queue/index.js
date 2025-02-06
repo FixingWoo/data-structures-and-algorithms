@@ -7,33 +7,33 @@ class Node {
 
 class Queue {
   constructor() {
-    this.first = null;
-    this.last = null;
+    this.head = null;
+    this.tail = null;
     this.size = 0;
   }
   enqueue(value) {
     const newNode = new Node(value);
 
-    if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
     } else {
-      this.last.next = newNode;
-      this.last = newNode;
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
 
     return ++this.size;
   }
   dequeue() {
-    if (!this.first) {
+    if (!this.head) {
       return undefined;
     }
 
-    const removedNode = this.first;
-    this.first = removedNode.next;
+    const removedNode = this.head;
+    this.head = removedNode.next;
 
-    if (!this.first) {
-      this.last = null;
+    if (!this.head) {
+      this.tail = null;
     }
 
     if (this.size > 0) this.size--;
@@ -41,7 +41,7 @@ class Queue {
     return removedNode.value;
   }
   peek() {
-    return this.first ? this.first.value : undefined;
+    return this.head ? this.head.value : undefined;
   }
   isEmpty() {
     return this.size === 0;
